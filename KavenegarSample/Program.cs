@@ -1,7 +1,13 @@
+using KavenegarSample.Models;
+using KavenegarSample.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.Configure<KavenegarInfoViewModel>(builder.Configuration.GetSection("KavenegarInfo"));
+builder.Services.AddScoped<ISMSService, SMSService>();
 
 var app = builder.Build();
 
